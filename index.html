@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Reencuentro de Ex Alumnos - 25 Años Después 🎊</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6A0DAD;
+            --secondary-color: #FFD700;
+            --accent-color: #FF4500;
+            --background-color: #F0F0F0;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        h1, .subtitle {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary-color);
+            text-shadow: 2px 2px var(--secondary-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .date {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .input-container {
+            width: 80%;
+            margin: 0 auto 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            cursor: text;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        #participare {
+            background-color: var(--primary-color);
+            color: white;
+            opacity: 0.9;
+        }
+
+        #participare:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        #noParticipare {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        #noParticipare:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        #motivo {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        #enviar {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .mensaje {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 1000;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .show-mensaje {
+            opacity: 1;
+            animation: celebracion 1s ease-in-out;
+        }
+
+        @keyframes celebracion {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary-color);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .emoji {
+            font-size: 2rem;
+            position: fixed;
+            opacity: 0;
+            animation: float-emoji 5s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes float-emoji {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.7; }
+        }
+
+        .firework {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: firework 1s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes firework {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reencuentro de Ex Alumnos</h1>
+        <div class="subtitle">25 Años después</div>
+        <div class="date">27 de setiembre 2025</div>
+        <form id="participacionForm">
+            <div class="input-container">
+                <input type="text" id="nombre" placeholder="✨ Nombres Completos" required>
+            </div>
+            <div class="input-container">
+                <input type="tel" id="celular" placeholder="📱 Número de Celular" required>
+            </div>
+            <div class="buttons">
+                <button type="button" id="participare">¡SÍ PARTICIPARÉ! 🎊</button>
+                <button type="button" id="noParticipare">NO PARTICIPARÉ 😢</button>
+            </div>
+            <textarea id="motivo" placeholder="📝 ¿Cuál es el motivo por el que no participarás?"></textarea>
+            <button type="submit" id="enviar">Enviar Respuesta 📤</button>
+        </form>
+    </div>
+    <div class="mensaje" id="mensaje"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const form = document.getElementById('participacionForm');
+            const participare = document.getElementById('participare');
+            const noParticipare = document.getElementById('noParticipare');
+            const motivo = document.getElementById('motivo');
+            const enviar = document.getElementById('enviar');
+            const mensaje = document.getElementById('mensaje');
+            const inputContainers = document.querySelectorAll('.input-container');
+
+            let participacion = '';
+            let registroCompletado = false;
+
+            function showMensaje(text) {
+                mensaje.innerHTML = text;
+                mensaje.classList.add('show-mensaje');
+                createConfetti();
+                createFireworks();
+                setTimeout(() => {
+                    mensaje.classList.remove('show-mensaje');
+                }, 5000);
+            }
+
+            function createConfetti() {
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear`;
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 5000);
+                }
+            }
+
+            function createFireworks() {
+                for (let i = 0; i < 50; i++) {
+                    const firework = document.createElement('div');
+                    firework.classList.add('firework');
+                    firework.style.left = `${Math.random() * 100}vw`;
+                    firework.style.top = `${Math.random() * 100}vh`;
+                    firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    firework.style.setProperty('--tx', `${(Math.random() - 0.5) * 200}px`);
+                    firework.style.setProperty('--ty', `${(Math.random() - 0.5) * 200}px`);
+                    document.body.appendChild(firework);
+                    setTimeout(() => firework.remove(), 1000);
+                }
+            }
+
+            function createFloatingEmojis() {
+                const emojis = ['🎉', '🥂', '🎊', '🍾', '👨‍🎓', '👩‍🎓', '🎓', '🕰️'];
+                for (let i = 0; i < 10; i++) {
+                    const emoji = document.createElement('div');
+                    emoji.classList.add('emoji');
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = `${Math.random() * 100}vw`;
+                    emoji.style.top = `${Math.random() * 100}vh`;
+                    emoji.style.animationDelay = `${Math.random() * 5}s`;
+                    document.body.appendChild(emoji);
+                }
+            }
+
+            createFloatingEmojis();
+
+            inputContainers.forEach(container => {
+                container.addEventListener('click', (e) => {
+                    const input = container.querySelector('input');
+                    input.focus();
+                });
+            });
+
+            participare.addEventListener('click', () => {
+                if (registroCompletado) return;
+                participacion = 'Sí participaré';
+                motivo.style.display = 'none';
+                enviar.style.display = 'none';
+                participare.style.opacity = '1';
+                noParticipare.style.opacity = '0.9';
+                showMensaje('¡CONTAMOS CON TU PARTICIPACIÓN PROMO!<br>NOS VEMOS EL 27 DE SETIEMBRE!! 🎓');
+                submitForm();
+            });
+
+            noParticipare.addEventListener('click', () => {
+                if (registroCompletado) return;
+                participacion = 'No participaré';
+                motivo.style.display = 'block';
+                enviar.style.display = 'inline-block';
+                noParticipare.style.opacity = '1';
+                participare.style.opacity = '0.9';
+            });
+
+            function submitForm() {
+                if (registroCompletado) {
+                    showMensaje('Ya has enviado tu respuesta. ¡Gracias!');
+                    return;
+                }
+                const nombre = document.getElementById('nombre').value;
+                const celular = document.getElementById('celular').value;
+                const motivoText = motivo.value;
+
+                // Aquí es donde enviarías los datos a Google Sheets
+                console.log('Enviando datos:', { nombre, celular, participacion, motivoText });
+
+                showMensaje('¡CONTAMOS CON TU PARTICIPACIÓN PROMO!<br>NOS VEMOS EL 27 DE SETIEMBRE!! 🎓');
+                form.reset();
+                motivo.style.display = 'none';
+                enviar.style.display = 'none';
+                participare.style.opacity = '0.9';
+                noParticipare.style.opacity = '0.9';
+                registroCompletado = true;
+
+                // Deshabilitar los campos y botones después del registro
+                document.getElementById('nombre').disabled = true;
+                document.getElementById('celular').disabled = true;
+                participare.disabled = true;
+                noParticipare.disabled = true;
+                enviar.disabled = true;
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitForm();
+            });
+        });
+    </script>
+</body>
+</html>
